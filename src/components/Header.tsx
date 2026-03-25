@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+п»їimport { useEffect, useRef, useState } from 'react';
 import { ChevronDownIcon, SupportModal } from './icons';
 
 function Header() {
@@ -26,10 +26,10 @@ function Header() {
         <div className="font-semibold text-lg">Build &amp; Estimate</div>
         <div className="flex items-center gap-6 text-sm">
           <button
-            onClick={() => alert('В демо-версии уведомления выключены')}
+            onClick={() => alert('Р’ РґРµРјРѕ-РІРµСЂСЃРёРё СѓРІРµРґРѕРјР»РµРЅРёСЏ РІС‹РєР»СЋС‡РµРЅС‹')}
             className="relative text-sm text-gray-100 hover:text-white flex items-center gap-1"
           >
-            <span>Уведомления</span>
+            <span>РЈРІРµРґРѕРјР»РµРЅРёСЏ</span>
             <span className="ml-1 inline-flex items-center justify-center rounded-full bg-gray-200 text-gray-700 text-[10px] px-1.5 py-0.5">
               0
             </span>
@@ -39,7 +39,7 @@ function Header() {
             onClick={() => setIsSupportOpen(true)}
             className="text-sm text-gray-100 hover:text-white"
           >
-            Поддержка
+            РџРѕРґРґРµСЂР¶РєР°
           </button>
 
           <div className="relative" ref={userMenuRef}>
@@ -47,7 +47,7 @@ function Header() {
               onClick={() => setIsUserMenuOpen((prev) => !prev)}
               className="flex items-center gap-2 text-sm text-gray-100 hover:text-white"
             >
-              <span>Иван Петров</span>
+              <span>РРІР°РЅ РџРµС‚СЂРѕРІ</span>
               <ChevronDownIcon className="w-4 h-4" />
             </button>
 
@@ -55,15 +55,15 @@ function Header() {
               <div className="absolute right-0 mt-2 w-40 rounded-md bg-white shadow-lg border border-gray-100 z-50">
                 <button
                   className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  onClick={() => alert('Страница профиля появится позже')}
+                  onClick={() => alert('РЎС‚СЂР°РЅРёС†Р° РїСЂРѕС„РёР»СЏ РїРѕСЏРІРёС‚СЃСЏ РїРѕР·Р¶Рµ')}
                 >
-                  Профиль (скоро)
+                  РџСЂРѕС„РёР»СЊ (СЃРєРѕСЂРѕ)
                 </button>
                 <button
                   className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  onClick={() => alert('В демо-версии выход не нужен')}
+                  onClick={() => alert('Р’ РґРµРјРѕ-РІРµСЂСЃРёРё РІС‹С…РѕРґ РЅРµ РЅСѓР¶РµРЅ')}
                 >
-                  Выйти
+                  Р’С‹Р№С‚Рё
                 </button>
               </div>
             )}
