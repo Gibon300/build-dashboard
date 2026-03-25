@@ -1,16 +1,17 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import ProjectsOverview from './components/ProjectsOverview';
-import ActiveProjects from './components/ActiveProjects';
-import CurrentProject from './components/CurrentProject';
-import EstimateEditor from './components/EstimateEditor';
-import PlanVsFact from './components/PlanVsFact';
 import { estimateItems, photos, planFactItems, projects } from './mockData';
-import { EstimateItem, Photo, PlanFactItem, Project } from './types';
+import { EstimateItem, Photo, PlanFactItem, Project, TabKey } from './types';
+import DashboardPage from './pages/DashboardPage';
+import ProjectsPage from './pages/ProjectsPage';
+import EstimatesPage from './pages/EstimatesPage';
+import AnalyticsPage from './pages/AnalyticsPage';
+import MaterialsPage from './pages/MaterialsPage';
 
 function App() {
   const [selectedProjectId, setSelectedProjectId] = useState<number>(projects[0].id);
+  const [activeTab, setActiveTab] = useState<TabKey>('dashboard');
 
   const currentProject = useMemo<Project | undefined>(
     () => projects.find((p) => p.id === selectedProjectId),
@@ -34,28 +35,29 @@ function App() {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      <Sidebar />
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
         <main className="flex-1 overflow-y-auto p-6 space-y-8">
-          <ProjectsOverview projects={projects} />
-          <ActiveProjects
-            projects={projects}
-            selectedProjectId={selectedProjectId}
-            setSelectedProjectId={setSelectedProjectId}
-          />
-          {currentProject && (
-            <>
-              <div className="text-sm text-gray-500 mb-1">Текущий проект</div>
-              <CurrentProject project={currentProject} />
-            </>
+          {activeTab === 'dashboard' && currentProject && (
+            <DashboardPage
+              projects={projects}
+              estimateItems={currentEstimateItems}
+              planFactItems={currentPlanFactItems}
+              photos={currentPhotos}
+              selectedProjectId={selectedProjectId}
+              setSelectedProjectId={setSelectedProjectId}
+              currentProject={currentProject}
+            />
           )}
-          {currentProject && (
-            <EstimateEditor project={currentProject} estimateItems={currentEstimateItems} />
+          {activeTab === 'projects' && <ProjectsPage projects={projects} />}
+          {activeTab === 'estimates' && (
+            <EstimatesPage projects={projects} estimates={estimateItems} />
           )}
-          {currentProject && (
-            <PlanVsFact planFactItems={currentPlanFactItems} photos={currentPhotos} />
+          {activeTab === 'analytics' && (
+            <AnalyticsPage projects={projects} planFact={planFactItems} />
           )}
+          {activeTab === 'materials' && <MaterialsPage />}
         </main>
       </div>
     </div>

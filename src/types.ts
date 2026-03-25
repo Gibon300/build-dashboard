@@ -37,3 +37,5 @@ export interface Photo {
   projectId: number;
   url: string;
 }
+
+export type TabKey = 'dashboard' | 'projects' | 'estimates' | 'analytics' | 'materials';
