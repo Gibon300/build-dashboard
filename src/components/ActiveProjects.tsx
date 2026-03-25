@@ -13,9 +13,9 @@ const formatCurrency = (value: number) =>
 function ActiveProjects({ projects, selectedProjectId, setSelectedProjectId }: Props) {
   return (
     <section className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800">Активные и новые проекты</h3>
+          <h3 className="text-xl font-semibold text-gray-800">Активные и новые проекты</h3>
           <p className="text-sm text-gray-500">Клик по карточке — переключение проекта</p>
         </div>
       </div>
@@ -27,7 +27,9 @@ function ActiveProjects({ projects, selectedProjectId, setSelectedProjectId }: P
               key={project.id}
               onClick={() => setSelectedProjectId(project.id)}
               className={`text-left border rounded-lg p-4 transition shadow-sm hover:shadow-md bg-white ${
-                isActive ? 'border-blue-500 ring-2 ring-blue-200' : 'border-gray-100'
+                isActive
+                  ? 'border-blue-300 ring-2 ring-blue-200 bg-blue-50 border-l-4 border-l-blue-500'
+                  : 'border-gray-100'
               }`}
             >
               <div className="flex items-start justify-between">

@@ -14,13 +14,13 @@ function ProjectsOverview({ projects }: Props) {
 
   return (
     <section className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex items-start justify-between mb-6 border-b border-gray-200 pb-2">
         <div>
           <h2 className="text-xl font-semibold text-gray-800">Обзор проектов</h2>
           <p className="text-sm text-gray-500">Сводка по планам и факту</p>
         </div>
         <button
-          onClick={() => alert('Создание проекта позже')}
+          onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
           className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700"
         >
           Создать проект

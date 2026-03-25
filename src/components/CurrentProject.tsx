@@ -14,20 +14,20 @@ function CurrentProject({ project }: Props) {
 
   return (
     <section className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
         <div>
           <p className="text-sm text-gray-500">Текущий проект</p>
           <h3 className="text-xl font-semibold text-gray-800">{project.name}</h3>
         </div>
         <div className="space-x-3">
           <button
-            onClick={() => alert('Редактирование проекта позже')}
+            onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
             className="border border-blue-600 text-blue-600 px-4 py-2 rounded-md text-sm hover:bg-blue-50"
           >
             Редактировать проект
           </button>
           <button
-            onClick={() => alert('Добавление отчёта позже')}
+            onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
             className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700"
           >
             Добавить отчёт

@@ -22,7 +22,7 @@ function EstimateEditor({ project, estimateItems }: Props) {
 
   return (
     <section className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
         <div>
           <p className="text-sm text-gray-500">Смета</p>
           <h3 className="text-xl font-semibold text-gray-800">{project.name}</h3>
@@ -99,13 +99,13 @@ function EstimateEditor({ project, estimateItems }: Props) {
 
           <div className="flex gap-3">
             <button
-              onClick={() => alert('Пересчёт позже, сейчас заглушка')}
+              onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
               className="flex-1 border border-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm hover:bg-gray-50"
             >
               Пересчитать
             </button>
             <button
-              onClick={() => alert('ИИ пока заглушка, смета уже показана ниже')}
+              onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
               className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700"
             >
               Сгенерировать смету с ИИ
@@ -152,7 +152,7 @@ function EstimateEditor({ project, estimateItems }: Props) {
               <span className="font-bold text-gray-900">{formatCurrency(clientPrice)}</span>
             </div>
             <button
-              onClick={() => alert('Экспорт появится позже')}
+              onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
               className="mt-2 w-full border border-blue-600 text-blue-600 px-4 py-2 rounded-md text-sm hover:bg-blue-50"
             >
               Экспорт в PDF/Excel

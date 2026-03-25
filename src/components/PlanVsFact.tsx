@@ -26,7 +26,7 @@ function PlanVsFact({ planFactItems, photos }: Props) {
 
   return (
     <section className="bg-white rounded-lg shadow p-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
         <div>
           <p className="text-sm text-gray-500">План vs Факт</p>
           <h3 className="text-xl font-semibold text-gray-800">Финансовая аналитика</h3>
@@ -83,8 +83,9 @@ function PlanVsFact({ planFactItems, photos }: Props) {
                 const diff = item.actualCost - item.plannedCost;
                 const percent = item.plannedCost === 0 ? 0 : (diff / item.plannedCost) * 100;
                 const rowColor = diff > 0 ? 'text-red-600' : 'text-green-600';
+                const rowBg = diff > 0 ? 'bg-red-50' : 'bg-green-50';
                 return (
-                  <tr key={item.id} className="border-t border-gray-100">
+                  <tr key={item.id} className={`border-t border-gray-100 ${rowBg}`}>
                     <td className="px-3 py-2 text-gray-700">{item.category}</td>
                     <td className="px-3 py-2 text-right text-gray-700">{formatCurrency(item.plannedCost)}</td>
                     <td className="px-3 py-2 text-right text-gray-700">{formatCurrency(item.actualCost)}</td>
@@ -102,13 +103,13 @@ function PlanVsFact({ planFactItems, photos }: Props) {
             <p className="text-sm font-semibold text-gray-800 mb-2">Галерея фото</p>
             <div className="flex flex-wrap gap-3">
               {photos.map((photo) => (
-                <button
-                  key={photo.id}
-                  onClick={() => setSelectedPhoto(photo)}
-                  className="w-28 h-20 overflow-hidden rounded-md border border-gray-200 hover:ring-2 hover:ring-blue-300"
-                >
-                  <img src={photo.url} alt={`Фото ${photo.id}`} className="w-full h-full object-cover" />
-                </button>
+                  <button
+                    key={photo.id}
+                    onClick={() => setSelectedPhoto(photo)}
+                    className="w-28 h-20 overflow-hidden rounded-md border border-gray-200 hover:ring-2 hover:ring-blue-300 transform transition hover:scale-105"
+                  >
+                    <img src={photo.url} alt={`Фото ${photo.id}`} className="w-full h-full object-cover" />
+                  </button>
               ))}
               {photos.length === 0 && <p className="text-sm text-gray-500">Фото пока нет</p>}
             </div>
@@ -116,20 +117,21 @@ function PlanVsFact({ planFactItems, photos }: Props) {
 
           <div>
             <label className="block text-sm text-gray-600 mb-1">Заметки прораба</label>
-            <textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              rows={4}
-              placeholder="Кратко фиксируйте ход работ"
-            />
-            <button
-              onClick={() => alert('Сохранено (заглушка)')}
-              className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700"
-            >
-              Сохранить
-            </button>
-          </div>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows={4}
+                placeholder="Кратко фиксируйте ход работ"
+              />
+              <p className="text-xs text-gray-400 mt-1">В демо-версии заметки не сохраняются.</p>
+              <button
+                onClick={() => alert('В демо-версии функция недоступна, данные предзаполнены')}
+                className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700"
+              >
+                Сохранить
+              </button>
+            </div>
         </div>
       </div>
 
