@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+п»їimport { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { PlanFactItem, Project } from '../types';
 
@@ -43,8 +43,8 @@ function AnalyticsPage({ projects, planFact }: AnalyticsPageProps) {
     <div className="space-y-6">
       <div className="bg-white rounded-lg shadow p-6">
         <div className="mb-4 border-b border-gray-200 pb-2">
-          <h2 className="text-xl font-semibold text-gray-800">Аналитика (демо, данные тестовые)</h2>
-          <p className="text-sm text-gray-500">Быстрый срез по месяцам и перерасходам</p>
+          <h2 className="text-xl font-semibold text-gray-800">РђРЅР°Р»РёС‚РёРєР° (РґРµРјРѕ, РґР°РЅРЅС‹Рµ С‚РµСЃС‚РѕРІС‹Рµ)</h2>
+          <p className="text-sm text-gray-500">Р‘С‹СЃС‚СЂС‹Р№ СЃСЂРµР· РїРѕ РјРµСЃСЏС†Р°Рј Рё РїРµСЂРµСЂР°СЃС…РѕРґР°Рј</p>
         </div>
         <div className="h-72 bg-gray-50 rounded-lg p-4 border border-gray-100">
           <ResponsiveContainer width="100%" height="100%">
@@ -54,8 +54,8 @@ function AnalyticsPage({ projects, planFact }: AnalyticsPageProps) {
               <YAxis />
               <Tooltip formatter={(value: number) => formatCurrency(value)} />
               <Legend />
-              <Bar dataKey="planned" name="План" fill="#2563eb" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="actual" name="Факт" fill="#16a34a" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="planned" name="РџР»Р°РЅ" fill="#2563eb" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="actual" name="Р¤Р°РєС‚" fill="#16a34a" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -63,17 +63,17 @@ function AnalyticsPage({ projects, planFact }: AnalyticsPageProps) {
 
       <div className="bg-white rounded-lg shadow p-6">
         <div className="mb-4 border-b border-gray-200 pb-2">
-          <h3 className="text-lg font-semibold text-gray-800">Топ категорий по перерасходу</h3>
-          <p className="text-sm text-gray-500">Сравнение план/факт по категориям</p>
+          <h3 className="text-lg font-semibold text-gray-800">РўРѕРї РєР°С‚РµРіРѕСЂРёР№ РїРѕ РїРµСЂРµСЂР°СЃС…РѕРґСѓ</h3>
+          <p className="text-sm text-gray-500">РЎСЂР°РІРЅРµРЅРёРµ РїР»Р°РЅ/С„Р°РєС‚ РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј</p>
         </div>
         <div className="overflow-hidden border border-gray-100 rounded-lg">
           <table className="min-w-full text-sm">
             <thead className="bg-gray-50 text-xs text-gray-600">
               <tr>
-                <th className="px-3 py-2 text-left">Категория</th>
-                <th className="px-3 py-2 text-right">План</th>
-                <th className="px-3 py-2 text-right">Факт</th>
-                <th className="px-3 py-2 text-right">Перерасход</th>
+                <th className="px-3 py-2 text-left">РљР°С‚РµРіРѕСЂРёСЏ</th>
+                <th className="px-3 py-2 text-right">РџР»Р°РЅ</th>
+                <th className="px-3 py-2 text-right">Р¤Р°РєС‚</th>
+                <th className="px-3 py-2 text-right">РџРµСЂРµСЂР°СЃС…РѕРґ</th>
                 <th className="px-3 py-2 text-right">%</th>
               </tr>
             </thead>

@@ -1,4 +1,4 @@
-import { TabKey } from '../types';
+п»їimport { TabKey } from '../types';
 
 interface SidebarProps {
   activeTab: TabKey;
@@ -6,17 +6,17 @@ interface SidebarProps {
 }
 
 const menu: { label: string; key: TabKey }[] = [
-  { label: 'Дашборд', key: 'dashboard' },
-  { label: 'Проекты', key: 'projects' },
-  { label: 'Сметы', key: 'estimates' },
-  { label: 'Аналитика', key: 'analytics' },
-  { label: 'Материалы', key: 'materials' }
+  { label: 'Р”Р°С€Р±РѕСЂРґ', key: 'dashboard' },
+  { label: 'РџСЂРѕРµРєС‚С‹', key: 'projects' },
+  { label: 'РЎРјРµС‚С‹', key: 'estimates' },
+  { label: 'РђРЅР°Р»РёС‚РёРєР°', key: 'analytics' },
+  { label: 'РњР°С‚РµСЂРёР°Р»С‹', key: 'materials' }
 ];
 
 function Sidebar({ activeTab, onTabChange }: SidebarProps) {
   return (
     <aside className="w-64 bg-white border-r border-gray-200 h-screen sticky top-0 overflow-y-auto">
-      <div className="p-6 text-sm font-semibold text-gray-700">Навигация</div>
+      <div className="p-6 text-sm font-semibold text-gray-700">РќР°РІРёРіР°С†РёСЏ</div>
       <nav className="space-y-1 px-2 pb-6">
         {menu.map((item) => {
           const isActive = item.key === activeTab;

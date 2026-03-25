@@ -1,4 +1,4 @@
-import { EstimateItem, Project } from '../types';
+п»їimport { EstimateItem, Project } from '../types';
 
 interface EstimatesPageProps {
   projects: Project[];
@@ -23,18 +23,18 @@ function EstimatesPage({ projects, estimates }: EstimatesPageProps) {
   return (
     <section className="bg-white rounded-lg shadow p-6">
       <div className="mb-4 border-b border-gray-200 pb-2">
-        <h2 className="text-xl font-semibold text-gray-800">Сметы</h2>
-        <p className="text-sm text-gray-500">Демо-режим: откройте смету на вкладке Дашборд</p>
+        <h2 className="text-xl font-semibold text-gray-800">РЎРјРµС‚С‹</h2>
+        <p className="text-sm text-gray-500">Р”РµРјРѕ-СЂРµР¶РёРј: РѕС‚РєСЂРѕР№С‚Рµ СЃРјРµС‚Сѓ РЅР° РІРєР»Р°РґРєРµ Р”Р°С€Р±РѕСЂРґ</p>
       </div>
       <div className="overflow-hidden border border-gray-100 rounded-lg">
         <table className="min-w-full text-sm">
           <thead className="bg-gray-50 text-xs text-gray-600">
             <tr>
-              <th className="px-3 py-2 text-left">Проект</th>
-              <th className="px-3 py-2 text-right">Кол-во позиций</th>
-              <th className="px-3 py-2 text-right">Сумма сметы, ?</th>
-              <th className="px-3 py-2 text-left">Статус</th>
-              <th className="px-3 py-2 text-right">Действия</th>
+              <th className="px-3 py-2 text-left">РџСЂРѕРµРєС‚</th>
+              <th className="px-3 py-2 text-right">РљРѕР»-РІРѕ РїРѕР·РёС†РёР№</th>
+              <th className="px-3 py-2 text-right">РЎСѓРјРјР° СЃРјРµС‚С‹, ?</th>
+              <th className="px-3 py-2 text-left">РЎС‚Р°С‚СѓСЃ</th>
+              <th className="px-3 py-2 text-right">Р”РµР№СЃС‚РІРёСЏ</th>
             </tr>
           </thead>
           <tbody>
@@ -43,13 +43,13 @@ function EstimatesPage({ projects, estimates }: EstimatesPageProps) {
                 <td className="px-3 py-2 text-gray-800">{row.name}</td>
                 <td className="px-3 py-2 text-right text-gray-700">{row.itemsCount}</td>
                 <td className="px-3 py-2 text-right text-gray-800">{formatCurrency(row.total)}</td>
-                <td className="px-3 py-2 text-gray-700">Черновик</td>
+                <td className="px-3 py-2 text-gray-700">Р§РµСЂРЅРѕРІРёРє</td>
                 <td className="px-3 py-2 text-right">
                   <button
-                    onClick={() => alert('Смету можно посмотреть во вкладке Дашборд, это демо-версия')}
+                    onClick={() => alert('РЎРјРµС‚Сѓ РјРѕР¶РЅРѕ РїРѕСЃРјРѕС‚СЂРµС‚СЊ РІРѕ РІРєР»Р°РґРєРµ Р”Р°С€Р±РѕСЂРґ, СЌС‚Рѕ РґРµРјРѕ-РІРµСЂСЃРёСЏ')}
                     className="text-blue-600 hover:text-blue-800 text-sm"
                   >
-                    Открыть смету
+                    РћС‚РєСЂС‹С‚СЊ СЃРјРµС‚Сѓ
                   </button>
                 </td>
               </tr>

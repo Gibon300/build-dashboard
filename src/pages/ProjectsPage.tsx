@@ -1,4 +1,4 @@
-import { Project } from '../types';
+п»їimport { Project } from '../types';
 
 interface ProjectsPageProps {
   projects: Project[];
@@ -11,20 +11,20 @@ function ProjectsPage({ projects }: ProjectsPageProps) {
   return (
     <section className="bg-white rounded-lg shadow p-6">
       <div className="mb-4 border-b border-gray-200 pb-2">
-        <h2 className="text-xl font-semibold text-gray-800">Все проекты</h2>
-        <p className="text-sm text-gray-500">Демо-обзор: переходы пока не реализованы</p>
+        <h2 className="text-xl font-semibold text-gray-800">Р’СЃРµ РїСЂРѕРµРєС‚С‹</h2>
+        <p className="text-sm text-gray-500">Р”РµРјРѕ-РѕР±Р·РѕСЂ: РїРµСЂРµС…РѕРґС‹ РїРѕРєР° РЅРµ СЂРµР°Р»РёР·РѕРІР°РЅС‹</p>
       </div>
       <div className="overflow-hidden border border-gray-100 rounded-lg">
         <table className="min-w-full text-sm">
           <thead className="bg-gray-50 text-xs text-gray-600">
             <tr>
-              <th className="px-3 py-2 text-left">Проект</th>
-              <th className="px-3 py-2 text-left">Адрес</th>
-              <th className="px-3 py-2 text-left">Статус</th>
-              <th className="px-3 py-2 text-right">Смета, ?</th>
-              <th className="px-3 py-2 text-right">Факт, ?</th>
-              <th className="px-3 py-2 text-right">Перерасход, ?</th>
-              <th className="px-3 py-2 text-right">Действия</th>
+              <th className="px-3 py-2 text-left">РџСЂРѕРµРєС‚</th>
+              <th className="px-3 py-2 text-left">РђРґСЂРµСЃ</th>
+              <th className="px-3 py-2 text-left">РЎС‚Р°С‚СѓСЃ</th>
+              <th className="px-3 py-2 text-right">РЎРјРµС‚Р°, ?</th>
+              <th className="px-3 py-2 text-right">Р¤Р°РєС‚, ?</th>
+              <th className="px-3 py-2 text-right">РџРµСЂРµСЂР°СЃС…РѕРґ, ?</th>
+              <th className="px-3 py-2 text-right">Р”РµР№СЃС‚РІРёСЏ</th>
             </tr>
           </thead>
           <tbody>
@@ -42,10 +42,10 @@ function ProjectsPage({ projects }: ProjectsPageProps) {
                   </td>
                   <td className="px-3 py-2 text-right">
                     <button
-                      onClick={() => alert('В демо-версии переход не реализован, смотрите вкладку Дашборд')}
+                      onClick={() => alert('Р’ РґРµРјРѕ-РІРµСЂСЃРёРё РїРµСЂРµС…РѕРґ РЅРµ СЂРµР°Р»РёР·РѕРІР°РЅ, СЃРјРѕС‚СЂРёС‚Рµ РІРєР»Р°РґРєСѓ Р”Р°С€Р±РѕСЂРґ')}
                       className="text-blue-600 hover:text-blue-800 text-sm"
                     >
-                      Открыть
+                      РћС‚РєСЂС‹С‚СЊ
                     </button>
                   </td>
                 </tr>

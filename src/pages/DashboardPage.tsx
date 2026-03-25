@@ -1,4 +1,4 @@
-import ActiveProjects from '../components/ActiveProjects';
+п»їimport ActiveProjects from '../components/ActiveProjects';
 import CurrentProject from '../components/CurrentProject';
 import EstimateEditor from '../components/EstimateEditor';
 import PlanVsFact from '../components/PlanVsFact';
@@ -34,7 +34,7 @@ function DashboardPage({
         setSelectedProjectId={setSelectedProjectId}
       />
       <div>
-        <div className="text-sm text-gray-500 mb-1">Текущий проект</div>
+        <div className="text-sm text-gray-500 mb-1">РўРµРєСѓС‰РёР№ РїСЂРѕРµРєС‚</div>
         <CurrentProject project={currentProject} />
       </div>
       <EstimateEditor project={currentProject} estimateItems={estimateItems} />
