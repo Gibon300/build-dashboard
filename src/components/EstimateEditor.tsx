@@ -115,7 +115,7 @@ function EstimateEditor({ project, estimateItems }: Props) {
 
         <div className="overflow-hidden border border-gray-100 rounded-lg">
           <div className="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
-            Внутри работ могут быть подзадачи (этапы): демонтаж > снос стены, уборка мусора и т.д.
+            Внутри работ могут быть подзадачи (этапы): демонтаж → снос стены, уборка мусора и т.д.
           </div>
           <table className="min-w-full text-sm">
             <thead className="bg-gray-50 text-xs text-gray-600">
