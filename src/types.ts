@@ -22,6 +22,7 @@ export interface EstimateItem {
   quantity: number;
   unitPrice: number;
   total: number;
+  tasks?: EstimateTask[];
 }
 
 export interface PlanFactItem {
@@ -39,3 +40,16 @@ export interface Photo {
 }
 
 export type TabKey = 'dashboard' | 'projects' | 'estimates' | 'analytics' | 'materials';
+
+export interface EstimateTask {
+  id: number;
+  estimateItemId: number;
+  name: string;
+  description?: string;
+  stage?: string;
+  plannedQuantity?: number;
+  plannedCost?: number;
+  actualQuantity?: number;
+  actualCost?: number;
+  done?: boolean;
+}

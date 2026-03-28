@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import { EstimateItem, Project } from '../types';
 
 interface Props {
@@ -114,6 +114,9 @@ function EstimateEditor({ project, estimateItems }: Props) {
         </div>
 
         <div className="overflow-hidden border border-gray-100 rounded-lg">
+          <div className="px-4 py-2 text-xs text-gray-500 border-b border-gray-100">
+            Внутри работ могут быть подзадачи (этапы): демонтаж > снос стены, уборка мусора и т.д.
+          </div>
           <table className="min-w-full text-sm">
             <thead className="bg-gray-50 text-xs text-gray-600">
               <tr>
@@ -127,14 +130,48 @@ function EstimateEditor({ project, estimateItems }: Props) {
             </thead>
             <tbody>
               {estimateItems.map((item) => (
-                <tr key={item.id} className="border-t border-gray-100">
-                  <td className="px-3 py-2 text-gray-700">{item.category}</td>
-                  <td className="px-3 py-2 text-gray-700">{item.workName}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{item.unit}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{item.quantity}</td>
-                  <td className="px-3 py-2 text-right text-gray-700">{formatCurrency(item.unitPrice)}</td>
-                  <td className="px-3 py-2 text-right font-semibold text-gray-800">{formatCurrency(item.total)}</td>
-                </tr>
+                <React.Fragment key={item.id}>
+                  <tr className="border-t border-gray-100">
+                    <td className="px-3 py-2 text-gray-700">{item.category}</td>
+                    <td className="px-3 py-2 text-gray-700">{item.workName}</td>
+                    <td className="px-3 py-2 text-center text-gray-600">{item.unit}</td>
+                    <td className="px-3 py-2 text-center text-gray-600">{item.quantity}</td>
+                    <td className="px-3 py-2 text-right text-gray-700">{formatCurrency(item.unitPrice)}</td>
+                    <td className="px-3 py-2 text-right font-semibold text-gray-800">{formatCurrency(item.total)}</td>
+                  </tr>
+                  {item.tasks && item.tasks.length > 0 && (
+                    <tr className="bg-gray-50 border-t border-gray-100">
+                      <td colSpan={6} className="px-4 py-2">
+                        <div className="space-y-2 border-l border-gray-200 pl-3">
+                          {item.tasks.map((task) => (
+                            <div
+                              key={task.id}
+                              className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between text-xs sm:text-sm"
+                            >
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="checkbox"
+                                  checked={task.done ?? false}
+                                  onChange={() => alert('Подзадачи будут редактируемыми в следующей версии')}
+                                />
+                                <span className="font-medium">{task.name}</span>
+                                {task.stage && (
+                                  <span className="rounded-full bg-gray-200 px-2 py-0.5 text-[10px] uppercase tracking-wide">
+                                    {task.stage}
+                                  </span>
+                                )}
+                              </div>
+                              <div className="flex items-center gap-4 text-gray-600">
+                                {task.plannedCost !== undefined && <span>План: {formatCurrency(task.plannedCost)}</span>}
+                                {task.actualCost !== undefined && <span>Факт: {formatCurrency(task.actualCost)}</span>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>
