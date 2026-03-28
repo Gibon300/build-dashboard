@@ -57,12 +57,12 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
   }
 
   const filteredItems = useMemo(() => {
-    if (projectFilter === 'all') return estimateItems;
+    if (typeof projectFilter !== 'number') return estimateItems;
     return estimateItems.filter((item) => item.projectId === projectFilter);
   }, [estimateItems, projectFilter]);
 
   const filteredTasks = useMemo(() => {
-    if (projectFilter === 'all') return workTasks;
+    if (typeof projectFilter !== 'number') return workTasks;
     return workTasks.filter((task) => task.projectId === projectFilter);
   }, [projectFilter, workTasks]);
 
@@ -109,11 +109,6 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
                 <div className="flex justify-between text-sm">
                   <div className="font-medium break-words">
                     {item.workName}
-                    {projectFilter === 'all' && (
-                      <span className="ml-2 text-xs text-gray-500">(
-                        {projects.find((p) => p.id === item.projectId)?.name})
-                      </span>
-                    )}
                   </div>
                   <div className="text-gray-500 text-xs">План: {formatCurrency(item.total)}</div>
                 </div>
