@@ -24,6 +24,37 @@ const statusColor = (status: WorkTask['status']) => {
 
 function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
   const [projectFilter, setProjectFilter] = useState<'all' | number>('all');
+  const currentProject = projectFilter === 'all' ? undefined : projects.find((p) => p.id === projectFilter);
+
+  if (projectFilter === 'all') {
+    return (
+      <section className="bg-white rounded-lg shadow p-6">
+        <div className="mb-4">
+          <h1 className="text-xl font-semibold text-gray-900">Работы и этапы</h1>
+          <p className="mt-1 text-sm text-gray-600">
+            Сначала выберите проект, затем вы сможете посмотреть список работ и подзадач по нему.
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <button
+              key={project.id}
+              onClick={() => setProjectFilter(project.id)}
+              className="flex flex-col items-start rounded-lg border border-gray-200 bg-white p-4 text-left shadow-sm hover:border-blue-400 hover:shadow-md transition"
+            >
+              <div className="text-sm font-semibold text-gray-900">{project.name}</div>
+              <div className="mt-1 text-xs text-gray-500 break-words">{project.address}</div>
+              <div className="mt-2 text-xs text-gray-500">Статус: {project.status}</div>
+              <div className="mt-1 text-xs text-gray-500">
+                План: {project.plannedCost.toLocaleString('ru-RU')} ₽
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   const filteredItems = useMemo(() => {
     if (projectFilter === 'all') return estimateItems;
@@ -58,23 +89,13 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
     <section className="bg-white rounded-lg shadow p-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4 border-b border-gray-200 pb-2">
         <div>
-          <h2 className="text-xl font-semibold text-gray-800">Работы и этапы</h2>
-          <p className="text-sm text-gray-500">Категории работ и связанные подзадачи</p>
+          <h2 className="text-xl font-semibold text-gray-800">Работы и этапы — {currentProject?.name}</h2>
+          <p className="text-sm text-gray-500">Категории работ и связанные подзадачи по выбранному проекту.</p>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <label className="text-gray-600">Проект</label>
-          <select
-            value={projectFilter}
-            onChange={(e) => setProjectFilter(e.target.value === 'all' ? 'all' : Number(e.target.value))}
-            className="border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="all">Все проекты</option>
-            {projects.map((project) => (
-              <option key={project.id} value={project.id}>
-                {project.name}
-              </option>
-            ))}
-          </select>
+          <button className="text-blue-600 hover:text-blue-700" onClick={() => setProjectFilter('all')}>
+            Все проекты
+          </button>
         </div>
       </div>
 
