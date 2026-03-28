@@ -55,34 +55,53 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
 
   const currentProject = projects.find((p) => p.id === selectedProjectId);
 
-  const filteredItems = useMemo(
+  const itemsForProject = useMemo(
     () => estimateItems.filter((item) => item.projectId === selectedProjectId),
     [estimateItems, selectedProjectId]
   );
 
-  const filteredTasks = useMemo(
+  const tasksForProject = useMemo(
     () => workTasks.filter((task) => task.projectId === selectedProjectId),
     [selectedProjectId, workTasks]
   );
 
   const tasksByItem = useMemo(() => {
     const map: Record<number, WorkTask[]> = {};
-    filteredTasks.forEach((task) => {
+    tasksForProject.forEach((task) => {
       if (!map[task.estimateItemId]) map[task.estimateItemId] = [];
       map[task.estimateItemId].push(task);
     });
     return map;
-  }, [filteredTasks]);
+  }, [tasksForProject]);
 
   const groupedByCategory = useMemo(() => {
     const map = new Map<string, EstimateItem[]>();
-    filteredItems.forEach((item) => {
+    itemsForProject.forEach((item) => {
       const arr = map.get(item.category) || [];
       arr.push(item);
       map.set(item.category, arr);
     });
     return Array.from(map.entries()).map(([category, items]) => ({ category, items }));
-  }, [filteredItems]);
+  }, [itemsForProject]);
+
+  if (itemsForProject.length === 0) {
+    return (
+      <section className="bg-white rounded-lg shadow p-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4 border-b border-gray-200 pb-2">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800">Работы и этапы — {currentProject?.name}</h2>
+            <p className="text-sm text-gray-500">Категории работ и связанные подзадачи по выбранному проекту.</p>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <button className="text-blue-600 hover:text-blue-700" onClick={() => setSelectedProjectId(null)}>
+              Все проекты
+            </button>
+          </div>
+        </div>
+        <p className="text-sm text-gray-600">Для выбранного проекта пока не заведены работы и этапы.</p>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-white rounded-lg shadow p-6">
@@ -147,9 +166,6 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
             ))}
           </div>
         ))}
-        {groupedByCategory.length === 0 && (
-          <p className="text-sm text-gray-500">Нет работ для выбранного проекта.</p>
-        )}
       </div>
     </section>
   );
