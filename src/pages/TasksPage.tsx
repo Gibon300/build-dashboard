@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+п»їimport { useMemo, useState } from 'react';
 import { EstimateItem, Project, WorkTask } from '../types';
 
 interface TasksPageProps {
@@ -11,9 +11,9 @@ const formatCurrency = (value: number) =>
   value.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 });
 
 const statusLabel = (status: WorkTask['status']) => {
-  if (status === 'done') return 'Готово';
-  if (status === 'in_progress') return 'В работе';
-  return 'Не начато';
+  if (status === 'done') return 'Р“РѕС‚РѕРІРѕ';
+  if (status === 'in_progress') return 'Р’ СЂР°Р±РѕС‚Рµ';
+  return 'РќРµ РЅР°С‡Р°С‚Рѕ';
 };
 
 const statusColor = (status: WorkTask['status']) => {
@@ -23,15 +23,15 @@ const statusColor = (status: WorkTask['status']) => {
 };
 
 function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
-  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
+  const [selectedProjectId, setSelectedProjectId] = useState<number | 'all'>('all');
 
-  if (selectedProjectId === null) {
+  if (selectedProjectId === 'all') {
     return (
       <section className="bg-white rounded-lg shadow p-6">
         <div className="mb-4">
-          <h1 className="text-xl font-semibold text-gray-900">Работы и этапы</h1>
+          <h1 className="text-xl font-semibold text-gray-900">Р Р°Р±РѕС‚С‹ Рё СЌС‚Р°РїС‹</h1>
           <p className="mt-1 text-sm text-gray-600">
-            Сначала выберите проект, затем вы сможете посмотреть список работ и подзадач по нему.
+            РЎРЅР°С‡Р°Р»Р° РІС‹Р±РµСЂРёС‚Рµ РїСЂРѕРµРєС‚, Р·Р°С‚РµРј РІС‹ СЃРјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРїРёСЃРѕРє СЂР°Р±РѕС‚ Рё РїРѕРґР·Р°РґР°С‡ РїРѕ РЅРµРјСѓ.
           </p>
         </div>
 
@@ -44,8 +44,8 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
             >
               <div className="text-sm font-semibold text-gray-900">{project.name}</div>
               <div className="mt-1 text-xs text-gray-500 break-words">{project.address}</div>
-              <div className="mt-2 text-xs text-gray-500">Статус: {project.status}</div>
-              <div className="mt-1 text-xs text-gray-500">План: {project.plannedCost.toLocaleString('ru-RU')} ?</div>
+              <div className="mt-2 text-xs text-gray-500">РЎС‚Р°С‚СѓСЃ: {project.status}</div>
+              <div className="mt-1 text-xs text-gray-500">РџР»Р°РЅ: {project.plannedCost.toLocaleString('ru-RU')} в‚Ѕ</div>
             </button>
           ))}
         </div>
@@ -89,16 +89,16 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
       <section className="bg-white rounded-lg shadow p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4 border-b border-gray-200 pb-2">
           <div>
-            <h2 className="text-xl font-semibold text-gray-800">Работы и этапы — {currentProject?.name}</h2>
-            <p className="text-sm text-gray-500">Категории работ и связанные подзадачи по выбранному проекту.</p>
+            <h2 className="text-xl font-semibold text-gray-800">Р Р°Р±РѕС‚С‹ Рё СЌС‚Р°РїС‹ вЂ” {currentProject?.name}</h2>
+            <p className="text-sm text-gray-500">РљР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚ Рё СЃРІСЏР·Р°РЅРЅС‹Рµ РїРѕРґР·Р°РґР°С‡Рё РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.</p>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <button className="text-blue-600 hover:text-blue-700" onClick={() => setSelectedProjectId(null)}>
-              Все проекты
+              Р’СЃРµ РїСЂРѕРµРєС‚С‹
             </button>
           </div>
         </div>
-        <p className="text-sm text-gray-600">Для выбранного проекта пока не заведены работы и этапы.</p>
+        <p className="text-sm text-gray-600">Р”Р»СЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° РїРѕРєР° РЅРµ Р·Р°РІРµРґРµРЅС‹ СЂР°Р±РѕС‚С‹ Рё СЌС‚Р°РїС‹.</p>
       </section>
     );
   }
@@ -107,12 +107,12 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
     <section className="bg-white rounded-lg shadow p-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4 border-b border-gray-200 pb-2">
         <div>
-          <h2 className="text-xl font-semibold text-gray-800">Работы и этапы — {currentProject?.name}</h2>
-          <p className="text-sm text-gray-500">Категории работ и связанные подзадачи по выбранному проекту.</p>
+          <h2 className="text-xl font-semibold text-gray-800">Р Р°Р±РѕС‚С‹ Рё СЌС‚Р°РїС‹ вЂ” {currentProject?.name}</h2>
+          <p className="text-sm text-gray-500">РљР°С‚РµРіРѕСЂРёРё СЂР°Р±РѕС‚ Рё СЃРІСЏР·Р°РЅРЅС‹Рµ РїРѕРґР·Р°РґР°С‡Рё РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.</p>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <button className="text-blue-600 hover:text-blue-700" onClick={() => setSelectedProjectId(null)}>
-            Все проекты
+            Р’СЃРµ РїСЂРѕРµРєС‚С‹
           </button>
         </div>
       </div>
@@ -126,7 +126,7 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
               <div key={item.id} className="mb-3 border-t border-gray-100 pt-2">
                 <div className="flex justify-between text-sm">
                   <div className="font-medium break-words">{item.workName}</div>
-                  <div className="text-gray-500 text-xs">План: {formatCurrency(item.total)}</div>
+                  <div className="text-gray-500 text-xs">РџР»Р°РЅ: {formatCurrency(item.total)}</div>
                 </div>
 
                 {tasksByItem[item.id] && (
@@ -140,7 +140,7 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
                           <input
                             type="checkbox"
                             checked={task.status === 'done'}
-                            onChange={() => alert('Изменение статусов будет реализовано позже')}
+                            onChange={() => alert('РР·РјРµРЅРµРЅРёРµ СЃС‚Р°С‚СѓСЃРѕРІ Р±СѓРґРµС‚ СЂРµР°Р»РёР·РѕРІР°РЅРѕ РїРѕР·Р¶Рµ')}
                           />
                           <span>{task.name}</span>
                           {task.stage && (
@@ -152,10 +152,10 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
                         <div className="flex items-center gap-3">
                           <span className={statusColor(task.status)}>{statusLabel(task.status)}</span>
                           {task.plannedCost !== undefined && (
-                            <span className="text-gray-500">План: {formatCurrency(task.plannedCost)}</span>
+                            <span className="text-gray-500">РџР»Р°РЅ: {formatCurrency(task.plannedCost)}</span>
                           )}
                           {task.actualCost !== undefined && (
-                            <span className="text-gray-500">Факт: {formatCurrency(task.actualCost)}</span>
+                            <span className="text-gray-500">Р¤Р°РєС‚: {formatCurrency(task.actualCost)}</span>
                           )}
                         </div>
                       </div>
