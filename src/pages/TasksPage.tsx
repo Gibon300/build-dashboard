@@ -25,6 +25,7 @@ const statusColor = (status: WorkTask['status']) => {
 function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
   const [selectedProjectId, setSelectedProjectId] = useState<number | 'all'>('all');
 
+  // Вид "все проекты": сетка карточек проектов
   if (selectedProjectId === 'all') {
     return (
       <section className="bg-white rounded-lg shadow p-6">
@@ -53,6 +54,7 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
     );
   }
 
+  // Конкретный проект выбран
   const currentProject = projects.find((p) => p.id === selectedProjectId);
 
   const itemsForProject = useMemo(
@@ -172,4 +174,3 @@ function TasksPage({ projects, estimateItems, workTasks }: TasksPageProps) {
 }
 
 export default TasksPage;
-
