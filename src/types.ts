@@ -39,7 +39,7 @@ export interface Photo {
   url: string;
 }
 
-export type TabKey = 'dashboard' | 'projects' | 'estimates' | 'analytics' | 'materials';
+export type TabKey = 'dashboard' | 'projects' | 'estimates' | 'tasks' | 'analytics' | 'materials';
 
 export interface EstimateTask {
   id: number;
@@ -52,4 +52,19 @@ export interface EstimateTask {
   actualQuantity?: number;
   actualCost?: number;
   done?: boolean;
+}
+
+export interface WorkTask {
+  id: number;
+  projectId: number;
+  estimateItemId: number;
+  name: string;
+  stage?: string;
+  status: 'not_started' | 'in_progress' | 'done';
+  plannedStart?: string;
+  plannedEnd?: string;
+  actualStart?: string;
+  actualEnd?: string;
+  plannedCost?: number;
+  actualCost?: number;
 }

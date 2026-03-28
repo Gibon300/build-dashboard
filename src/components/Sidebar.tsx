@@ -9,6 +9,7 @@ const menu: { label: string; key: TabKey }[] = [
   { label: 'Дашборд', key: 'dashboard' },
   { label: 'Проекты', key: 'projects' },
   { label: 'Сметы', key: 'estimates' },
+  { label: 'Работы', key: 'tasks' },
   { label: 'Аналитика', key: 'analytics' },
   { label: 'Материалы', key: 'materials' }
 ];

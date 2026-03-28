@@ -1,4 +1,4 @@
-﻿import { EstimateItem, Photo, PlanFactItem, Project, EstimateTask } from './types';
+﻿import { EstimateItem, Photo, PlanFactItem, Project, EstimateTask, WorkTask } from './types';
 
 export const projects: Project[] = [
   {
@@ -57,6 +57,21 @@ const tasks: EstimateTask[] = [
   { id: 109, estimateItemId: 15, name: 'Подключение щита', stage: 'Этап 2', plannedCost: 120000, done: true, actualCost: 118000 },
   { id: 110, estimateItemId: 16, name: 'Монтаж подсистемы', stage: 'Этап 1', plannedCost: 250000, done: true, actualCost: 255000 },
   { id: 111, estimateItemId: 16, name: 'Отделка фасада', stage: 'Этап 2', plannedCost: 326000, done: false },
+];
+
+export const workTasks: WorkTask[] = [
+  { id: 201, projectId: 1, estimateItemId: 1, name: 'Снос стены', stage: 'Этап 1', status: 'in_progress', plannedStart: '2026-02-05', plannedEnd: '2026-02-10', plannedCost: 20000 },
+  { id: 202, projectId: 1, estimateItemId: 1, name: 'Уборка мусора', stage: 'Этап 2', status: 'not_started', plannedStart: '2026-02-11', plannedEnd: '2026-02-12', plannedCost: 10000 },
+  { id: 203, projectId: 1, estimateItemId: 2, name: 'Подготовка основания', stage: 'Этап 1', status: 'done', plannedCost: 15000, actualCost: 15500 },
+  { id: 204, projectId: 1, estimateItemId: 2, name: 'Нанесение слоя', stage: 'Этап 2', status: 'in_progress', plannedCost: 50000 },
+  { id: 205, projectId: 1, estimateItemId: 3, name: 'Разводка по комнатам', stage: 'Этап 1', status: 'in_progress', plannedCost: 19000 },
+  { id: 206, projectId: 2, estimateItemId: 8, name: 'Сбор и вывоз мусора', stage: 'Этап 2', status: 'not_started', plannedCost: 15000 },
+  { id: 207, projectId: 2, estimateItemId: 9, name: 'Трассы под интернет', stage: 'Этап 1', status: 'not_started', plannedCost: 25000 },
+  { id: 208, projectId: 2, estimateItemId: 10, name: 'Шумоизоляция потолка', stage: 'Этап 1', status: 'not_started', plannedCost: 225000 },
+  { id: 209, projectId: 3, estimateItemId: 15, name: 'Прокладка кабеля', stage: 'Этап 1', status: 'done', plannedCost: 90000, actualCost: 92000 },
+  { id: 210, projectId: 3, estimateItemId: 15, name: 'Подключение щита', stage: 'Этап 2', status: 'done', plannedCost: 120000, actualCost: 118000 },
+  { id: 211, projectId: 3, estimateItemId: 16, name: 'Монтаж подсистемы', stage: 'Этап 1', status: 'done', plannedCost: 250000, actualCost: 255000 },
+  { id: 212, projectId: 3, estimateItemId: 16, name: 'Отделка фасада', stage: 'Этап 2', status: 'in_progress', plannedCost: 326000 }
 ];
 
 export const estimateItems: EstimateItem[] = [

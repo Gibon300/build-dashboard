@@ -1,13 +1,14 @@
 ﻿import { useMemo, useState } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { estimateItems, photos, planFactItems, projects } from './mockData';
+import { estimateItems, photos, planFactItems, projects, workTasks } from './mockData';
 import { EstimateItem, Photo, PlanFactItem, Project, TabKey } from './types';
 import DashboardPage from './pages/DashboardPage';
 import ProjectsPage from './pages/ProjectsPage';
 import EstimatesPage from './pages/EstimatesPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import MaterialsPage from './pages/MaterialsPage';
+import TasksPage from './pages/TasksPage';
 
 function App() {
   const [selectedProjectId, setSelectedProjectId] = useState<number>(projects[0].id);
@@ -53,6 +54,9 @@ function App() {
           {activeTab === 'projects' && <ProjectsPage projects={projects} />}
           {activeTab === 'estimates' && (
             <EstimatesPage projects={projects} estimates={estimateItems} />
+          )}
+          {activeTab === 'tasks' && (
+            <TasksPage projects={projects} estimateItems={estimateItems} workTasks={workTasks} />
           )}
           {activeTab === 'analytics' && (
             <AnalyticsPage projects={projects} planFact={planFactItems} />
